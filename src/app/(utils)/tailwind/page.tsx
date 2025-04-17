@@ -1,16 +1,17 @@
 "use client";
+import { ArrowLeft, Code, LayoutTemplate } from "lucide-react";
+import Link from "next/link";
 import Script from "next/script";
 import { useState } from "react";
 
 const TailwindPlayGroundPage = () => {
-
     const [innerHTML, setInnerHTML] = useState("");
+
     return (
-        <div className="p-4">
+        <div className="p-4 relative shadow-inner ">
             <Script src="https://cdn.tailwindcss.com" />
             <div className="container mx-auto">
                 <h1 className="text-2xl font-bold mb-4">Tailwind Playground</h1>
-
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <label
@@ -21,7 +22,7 @@ const TailwindPlayGroundPage = () => {
                         </label>
                         <textarea
                             id="htmlInput"
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-64 text-white"
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-64 dark:text-white"
                             placeholder="在此输入 HTML 代码"
                             onChange={(e) => setInnerHTML(e.target.value)}
                         ></textarea>
