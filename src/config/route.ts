@@ -1,9 +1,9 @@
 export const Tools = [
     {
         id: 1,
-        name: "Code Editor",
-        description: "Write and edit your code efficiently.",
-        link: "/code-editor",
+        name: "Tailwind Playground",
+        description: "tailwind實時編譯查看器.",
+        link: "/tailwind",
     },
     {
         id: 2,
