@@ -44,7 +44,7 @@ const RgbaToHex: React.FC = () => {
                 isValidNumber(parsedB, 0, 255) &&
                 isValidNumber(parsedA, 0, 1)
             ) {
-                setAlpha([Math.round(parsedA * 100) ]);
+                setAlpha([Math.round(parsedA * 100)]);
                 return { r: parsedR, g: parsedG, b: parsedB, a: parsedA };
             }
 
@@ -95,14 +95,14 @@ const RgbaToHex: React.FC = () => {
     const handleAlphaChange = (values: number[]) => {
         setAlpha(values);
         const alpha = values[0] / 100;
-        const hexAlpha = Math.round(alpha * 255).toString(16).padStart(2, '0');;
+        const hexAlpha = Math.round(alpha * 255)
+            .toString(16)
+            .padStart(2, "0");
         if (rgba && rgba.length >= 3) {
             const [r, g, b] = rgba.split(",").map((v) => parseInt(v.trim()));
             setRgba(`${r}, ${g}, ${b}, ${alpha}`);
-            console.log(`${r}, ${g}, ${b}, ${alpha}`);
-            
         }
-        if (hex && (hex.length >= 7 && hex.length <= 9)) {
+        if (hex && hex.length >= 7 && hex.length <= 9) {
             setHex(hex.slice(0, 7) + hexAlpha);
         }
     };
@@ -171,7 +171,11 @@ const RgbaToHex: React.FC = () => {
                                 className="h-[8px] w-full rounded-[8px]"
                                 style={{
                                     ...props.style,
-                                    backgroundImage: `linear-gradient(to right, ${hex ? hex.slice(0,7) : "#000000"}00, ${hex ? hex.slice(0,7) : "#000000"}ff)`,
+                                    backgroundImage: `linear-gradient(to right, ${
+                                        hex ? hex.slice(0, 7) : "#000000"
+                                    }00, ${
+                                        hex ? hex.slice(0, 7) : "#000000"
+                                    }ff)`,
                                 }}
                             >
                                 {children}
