@@ -1,6 +1,7 @@
 import { Tools as tools } from "@/src/config/route";
 import Image from "next/image";
 import Link from "next/link";
+import { ToastContainer } from "react-toastify";
 
 export default function RootLayout({
     children,
@@ -24,6 +25,7 @@ export default function RootLayout({
             </div>
             {/* utils */}
             {children}
+            <ToastContainer />
         </div>
     );
   }

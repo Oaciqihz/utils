@@ -6,13 +6,13 @@ export const Tools = [
         link: "/tailwind",
         img: "/icon/tailwindcss.svg",
     },
-    // {
-    //     id: 2,
-    //     name: "Design Tool",
-    //     description: "Create stunning UI/UX designs.",
-    //     link: "/code-editor",
-    //     img: "/icon/tailwind.svg",
-    // },
+    {
+        id: 2,
+        name: "Transform",
+        description: "轉換器.",
+        link: "/transform",
+        img: "/icon/transform.svg",
+    },
     // {
     //     id: 3,
     //     name: "Terminal",
