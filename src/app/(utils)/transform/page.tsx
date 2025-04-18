@@ -1,4 +1,4 @@
-import RgbaToHex from "@/src/components/transform/RgbaToHex";
+import { RgbaToHex, UrlTransform } from "@/src/components/transform";
 
 
 
@@ -8,7 +8,7 @@ const TransformPage: React.FC = () => {
             <div className="container mx-auto">
                 <h1 className="text-2xl font-bold mb-4">Transform Tools</h1>
                 <RgbaToHex />
-
+                <UrlTransform />
             </div>
         </div>
     );
@@ -16,120 +16,6 @@ const TransformPage: React.FC = () => {
 
 export default TransformPage;
 
-
-
-                // {/* RGBA <-> HEX */}
-                // <div className="bg-white rounded-xl shadow p-6 mb-8">
-                //     <h2 className="text-xl font-semibold text-gray-700 mb-4">
-                //         RGBA 与 HEX 互转
-                //     </h2>
-                //     <div className="flex flex-col md:flex-row gap-6">
-                //         {/* RGBA -> HEX */}
-                //         <div className="flex-1">
-                //             <div className="mb-2 font-medium text-gray-600">
-                //                 RGBA 转 HEX
-                //             </div>
-                //             <div className="flex gap-2 mb-2">
-                //                 <input
-                //                     type="number"
-                //                     min={0}
-                //                     max={255}
-                //                     value={rgba.r}
-                //                     onChange={(e) =>
-                //                         setRgba({ ...rgba, r: e.target.value })
-                //                     }
-                //                     className="w-16 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-200"
-                //                     placeholder="R"
-                //                 />
-                //                 <input
-                //                     type="number"
-                //                     min={0}
-                //                     max={255}
-                //                     value={rgba.g}
-                //                     onChange={(e) =>
-                //                         setRgba({ ...rgba, g: e.target.value })
-                //                     }
-                //                     className="w-16 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-200"
-                //                     placeholder="G"
-                //                 />
-                //                 <input
-                //                     type="number"
-                //                     min={0}
-                //                     max={255}
-                //                     value={rgba.b}
-                //                     onChange={(e) =>
-                //                         setRgba({ ...rgba, b: e.target.value })
-                //                     }
-                //                     className="w-16 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-200"
-                //                     placeholder="B"
-                //                 />
-                //                 <input
-                //                     type="number"
-                //                     min={0}
-                //                     max={1}
-                //                     step={0.01}
-                //                     value={rgba.a}
-                //                     onChange={(e) =>
-                //                         setRgba({ ...rgba, a: e.target.value })
-                //                     }
-                //                     className="w-16 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-200"
-                //                     placeholder="A"
-                //                 />
-                //                 <button
-                //                     className="px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                //                     onClick={handleRgbaToHex}
-                //                 >
-                //                     转换
-                //                 </button>
-                //             </div>
-                //             <div className="flex items-center gap-2 mt-2">
-                //                 <span className="text-gray-500">HEX:</span>
-                //                 <span className="font-mono text-lg text-blue-700">
-                //                     {rgbaToHexResult}
-                //                 </span>
-                //                 <div
-                //                     className="w-6 h-6 rounded border ml-2"
-                //                     style={{
-                //                         background: `rgba(${rgba.r},${rgba.g},${rgba.b},${rgba.a})`,
-                //                     }}
-                //                 />
-                //             </div>
-                //         </div>
-                //         {/* HEX -> RGBA */}
-                //         <div className="flex-1">
-                //             <div className="mb-2 font-medium text-gray-600">
-                //                 HEX 转 RGBA
-                //             </div>
-                //             <div className="flex gap-2 mb-2">
-                //                 <input
-                //                     type="text"
-                //                     value={hexInput}
-                //                     onChange={(e) =>
-                //                         setHexInput(e.target.value)
-                //                     }
-                //                     className="w-32 px-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-blue-200"
-                //                     placeholder="#RRGGBB"
-                //                 />
-                //                 <button
-                //                     className="px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-                //                     onClick={handleHexToRgba}
-                //                 >
-                //                     转换
-                //                 </button>
-                //             </div>
-                //             <div className="flex items-center gap-2 mt-2">
-                //                 <span className="text-gray-500">RGBA:</span>
-                //                 <span className="font-mono text-lg text-blue-700">
-                //                     {hexToRgbaResult}
-                //                 </span>
-                //                 <div
-                //                     className="w-6 h-6 rounded border ml-2"
-                //                     style={{ background: hexInput }}
-                //                 />
-                //             </div>
-                //         </div>
-                //     </div>
-                // </div>
                 // {/* URL <-> Base64 */}
                 // <div className="bg-white rounded-xl shadow p-6 mb-8">
                 //     <h2 className="text-xl font-semibold text-gray-700 mb-4">
