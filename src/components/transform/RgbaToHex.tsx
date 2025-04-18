@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import Copy from "../ui/copy";
+import { useState } from "react";
+import { Range } from "react-range";
 
 const RgbaToHex: React.FC = () => {
     const [rgba, setRgba] = useState<string>("");
     const [hex, setHex] = useState<string>("");
+    const [alpha, setAlpha] = useState([50]);
 
     // 處理rgba輸入
     const handleRgbaChange = (value: string) => {
@@ -42,6 +44,7 @@ const RgbaToHex: React.FC = () => {
                 isValidNumber(parsedB, 0, 255) &&
                 isValidNumber(parsedA, 0, 1)
             ) {
+                setAlpha([Math.round(parsedA * 100) ]);
                 return { r: parsedR, g: parsedG, b: parsedB, a: parsedA };
             }
 
@@ -82,9 +85,26 @@ const RgbaToHex: React.FC = () => {
                 hex.length === 8
                     ? (parseInt(hex.slice(6, 8), 16) / 255).toFixed(2)
                     : "";
+            setAlpha(a ? [Math.round(parseFloat(a) * 100)] : [100]);
             return a ? `${r}, ${g}, ${b}, ${a}` : `${r}, ${g}, ${b}`;
         };
         setRgba(hex.length === 6 || hex.length === 8 ? hexToRgba(hex) : "");
+    };
+
+    // 處理透明度變化
+    const handleAlphaChange = (values: number[]) => {
+        setAlpha(values);
+        const alpha = values[0] / 100;
+        const hexAlpha = Math.round(alpha * 255).toString(16).padStart(2, '0');;
+        if (rgba && rgba.length >= 3) {
+            const [r, g, b] = rgba.split(",").map((v) => parseInt(v.trim()));
+            setRgba(`${r}, ${g}, ${b}, ${alpha}`);
+            console.log(`${r}, ${g}, ${b}, ${alpha}`);
+            
+        }
+        if (hex && (hex.length >= 7 && hex.length <= 9)) {
+            setHex(hex.slice(0, 7) + hexAlpha);
+        }
     };
 
     return (
@@ -132,6 +152,40 @@ const RgbaToHex: React.FC = () => {
                         className="dark:text-black dark:border-gray-400 h-[50px] rounded-md border"
                         style={{ background: hex && rgba ? hex : "" }}
                     ></div>
+                </div>
+                {/* Alpha */}
+                <div id="alpha">
+                    <p className="mb-2 text-gray-600 font-bold">
+                        Transparency (Alpha)
+                    </p>
+                    <Range
+                        label="Select your value"
+                        step={1}
+                        min={0}
+                        max={100}
+                        values={alpha}
+                        onChange={(values) => handleAlphaChange(values)}
+                        renderTrack={({ props, children }) => (
+                            <div
+                                {...props}
+                                className="h-[8px] w-full rounded-[8px]"
+                                style={{
+                                    ...props.style,
+                                    backgroundImage: `linear-gradient(to right, ${hex ? hex.slice(0,7) : "#000000"}00, ${hex ? hex.slice(0,7) : "#000000"}ff)`,
+                                }}
+                            >
+                                {children}
+                            </div>
+                        )}
+                        renderThumb={({ props }) => (
+                            <div
+                                {...props}
+                                key={props.key}
+                                className="w-[20px] h-[20px] shadow-2xl rounded-full bg-[#2287f4]"
+                                style={props.style}
+                            />
+                        )}
+                    />
                 </div>
             </div>
         </div>
